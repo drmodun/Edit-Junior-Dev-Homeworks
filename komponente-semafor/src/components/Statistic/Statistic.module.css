@@ -1,0 +1,55 @@
+.statistic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 460px;
+    height: 30px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid black;
+    border-top: hidden;
+
+}
+
+.first>h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+    width: 30px;
+}
+
+.second>h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 10px;
+    width: 30px;
+}
+
+.statistic button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: cadetblue;
+    cursor: pointer;
+}
+
+.statistic button:hover {
+    background-color: #00bfff;
+}
+
+.first {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.second {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 90px;
+
+}
