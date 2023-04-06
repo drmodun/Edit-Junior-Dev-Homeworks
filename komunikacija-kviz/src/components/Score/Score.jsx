@@ -2,20 +2,22 @@ import { useQuestionContext } from "../../providers/QuestionProvider";
 import classes from "./Score.module.css";
 
 export const Score = () => {
-    const { correctAnswers, currentQuestionIndex, amount, category, difficulty } = useQuestionContext();
+    const { currentQuestionIndex, amount, difficulty, isActive, currentCorrectlyAnswered} = useQuestionContext();
     return (
-
+        <>
+        { isActive ? 
         <div className={classes.Score}>
 
-            <h1>
-                Category: {category} <br />
+            <span>
                 Difficulty: {difficulty} <br />
-                {currentQuestionIndex + 1} / {amount}
-            </h1>
-            <h1>
-                {correctAnswers}
-            </h1>
+                Current Question: {currentQuestionIndex + 1} / {amount}
+            </span>
+            <span>
+                Correct: {currentCorrectlyAnswered}
+            </span>
 
         </div>
+        : null}
+        </>
     );
 }

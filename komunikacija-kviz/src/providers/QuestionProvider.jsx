@@ -20,6 +20,8 @@ const defaultContext = {
     setDifficulty: () => { },
     isActive: false,
     setIsActive: () => { },
+    categoryDictionary: [],
+    setCategoryDictionary: () => { },
 };
 
 
@@ -35,14 +37,15 @@ export const QuestionProvider = ({ children }) => {
     const [category, setCategory] = useState(defaultContext.category);
     const [difficulty, setDifficulty] = useState(defaultContext.difficulty);
     const [isActive, setIsActive] = useState(defaultContext.isActive);
-
+    const [categoryDictionary, setCategoryDictionary] = useState(defaultContext.categoryDictionary);
 
 
     const setGameSettings = (amount, category, difficulty) => {
         setAmount(amount);
         setCategory(category);
         setDifficulty(difficulty);
-        genereateQuestions();
+        console.log(amount, category, difficulty);
+        genereateQuestions(amount, category, difficulty);
     };
 
     const toggleIsActive = () => {
@@ -50,15 +53,27 @@ export const QuestionProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        setAmount(9);
-        setCategory(9);
-        setDifficulty("easy");
-        genereateQuestions();
+        async function getCategories() {
+            try {
+                const response = await fetch("https://opentdb.com/api_category.php");
+                const data = await response.json();
+                console.log(data);
+                const categoryDictionary = data.trivia_categories.reduce((acc, category) => {
+                    acc[category.id] = category.name;
+                    return acc;
+                }, {});
+                setCategoryDictionary(categoryDictionary);
+                console.log(categoryDictionary);
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getCategories();
     }, []);
 
-    const genereateQuestions = async () => {
+    const genereateQuestions = async (amount, categoy, difficulty) => {
         try {
-            console.log(amount, category, difficulty);
             const url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
             const response = await fetch(url);
             const data = await response.json();
@@ -127,6 +142,7 @@ export const QuestionProvider = ({ children }) => {
                 amount,
                 isActive,
                 toggleIsActive,
+                categoryDictionary,
             }}
         >
             {children}

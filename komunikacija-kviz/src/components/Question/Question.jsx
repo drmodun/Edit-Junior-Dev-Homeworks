@@ -4,7 +4,7 @@ import classes from "./Question.module.css";
 export const Question = () => {
 
 
-    const { questions, currentQuestion, currentQuestionIndex, updateCorrectlyAnswered, updateCanMove, generateQuestions, isActive} = useQuestionContext();
+    const { questions, currentQuestion, currentQuestionIndex, updateCorrectlyAnswered, updateCanMove, generateQuestions, isActive } = useQuestionContext();
     const question = questions[currentQuestionIndex];
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -21,26 +21,29 @@ export const Question = () => {
     };
 
     return (
-        <div className={classes.Question}>
-            {question &&  isActive ? <>
-            <div className={classes.QuestionText}>{question.question}</div>
-            <div className={classes.Answers}>
-                {question.allAnswers.map((answer, index) => (
-                    <button
-                        className={classes.Answer}
-                        onClick={() => onAnswer(answer, index)}
-                        key={index}
-                        style={{backgroundColor : index === selectedAnswer ? answer === question.correct_answer ? "green" : "red" 
-                        : selectedAnswer!==null ? answer === question.correct_answer ? "green" : "white" : ""}}
+        <>
+            {question && isActive ?
+                <div className={classes.Question}>
+                    <div className={classes.QuestionText}>{question.question}</div>
+                    <div className={classes.Answers}>
+                        {question.allAnswers.map((answer, index) => (
+                            <button
+                                className={classes.Answer}
+                                onClick={() => onAnswer(answer, index)}
+                                key={index}
+                                style={{
+                                    backgroundColor: index === selectedAnswer ? answer === question.correct_answer ? "green" : "red"
+                                        : selectedAnswer !== null ? answer === question.correct_answer ? "green" : "white" : ""
+                                }}
 
-                        disabled={selectedAnswer !== null}
-                    >
-                        {answer}   
-                    </button>
-                ))}
-            </div>
-            </>
+                                disabled={selectedAnswer !== null}
+                            >
+                                {answer}
+                            </button>
+                        ))}
+                    </div>
+                </div>
                 : null}
-        </div>
+        </>
     );
 }

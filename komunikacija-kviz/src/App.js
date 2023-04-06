@@ -10,10 +10,15 @@ function App() {
 
   return (
     <QuestionProvider>
+      <h1>Quiz</h1>
+      <div className="App">
       <GameForm />
+      <div className="question">
       <Question />
       <ContinueButton />
+      </div>
       <Score />
+      </div>
     </QuestionProvider>
   );
 }
