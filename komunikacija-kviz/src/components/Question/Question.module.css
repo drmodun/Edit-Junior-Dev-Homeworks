@@ -31,9 +31,10 @@
     background-color: #F5F5F5;
     margin: 10px;
     cursor: pointer;
-    transition: 0.3s;
     font-size: large;
     color: black;
+    transition: background-color 0.2s linear;
+
 }   
 .Answer:hover{
     background-color: #E0E0E0;

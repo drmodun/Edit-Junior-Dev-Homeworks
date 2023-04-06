@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuestionContext } from "../../providers/QuestionProvider";
 import classes from "./Question.module.css";
 export const Question = () => {
 
-    const { questions, currentQuestion, currentQuestionIndex, updateCorrectlyAnswered, updateCanMove } = useQuestionContext();
+
+    const { questions, currentQuestion, currentQuestionIndex, updateCorrectlyAnswered, updateCanMove, generateQuestions, isActive} = useQuestionContext();
     const question = questions[currentQuestionIndex];
     const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+    useEffect(() => {
+        setSelectedAnswer(null);
+    }, [currentQuestionIndex]);
 
     const onAnswer = (answer, index) => {
         setSelectedAnswer(index);
@@ -17,7 +22,7 @@ export const Question = () => {
 
     return (
         <div className={classes.Question}>
-            {question ? <>
+            {question &&  isActive ? <>
             <div className={classes.QuestionText}>{question.question}</div>
             <div className={classes.Answers}>
                 {question.allAnswers.map((answer, index) => (
@@ -25,7 +30,9 @@ export const Question = () => {
                         className={classes.Answer}
                         onClick={() => onAnswer(answer, index)}
                         key={index}
-                        style={{backgroundColor : index === selectedAnswer ? answer === question.correct_answer ? "green" : "red" : "white"}}
+                        style={{backgroundColor : index === selectedAnswer ? answer === question.correct_answer ? "green" : "red" 
+                        : selectedAnswer!==null ? answer === question.correct_answer ? "green" : "white" : ""}}
+
                         disabled={selectedAnswer !== null}
                     >
                         {answer}   

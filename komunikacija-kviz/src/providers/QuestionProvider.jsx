@@ -12,10 +12,14 @@ const defaultContext = {
     setCurrentCorrectlyAnswered: () => { },
     canMove: false,
     setCanMove: () => { },
+    amount: 0,
+    setAmount: () => { },
     category: "",
     setCategory: () => { },
     difficulty: "",
     setDifficulty: () => { },
+    isActive: false,
+    setIsActive: () => { },
 };
 
 
@@ -27,34 +31,58 @@ export const QuestionProvider = ({ children }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(defaultContext.currentQuestionIndex);
     const [currentCorrectlyAnswered, setCurrentCorrectlyAnswered] = useState(defaultContext.currentCorrectlyAnswered);
     const [canMove, setCanMove] = useState(defaultContext.canMove);
+    const [amount, setAmount] = useState(defaultContext.amount);
+    const [category, setCategory] = useState(defaultContext.category);
+    const [difficulty, setDifficulty] = useState(defaultContext.difficulty);
+    const [isActive, setIsActive] = useState(defaultContext.isActive);
 
+
+
+    const setGameSettings = (amount, category, difficulty) => {
+        setAmount(amount);
+        setCategory(category);
+        setDifficulty(difficulty);
+        genereateQuestions();
+    };
+
+    const toggleIsActive = () => {
+        setIsActive(!isActive);
+    };
 
     useEffect(() => {
-        async function fetchQuestions() {
-            await genereateQuestions(9, "easy");
-        }
-        fetchQuestions();
+        setAmount(9);
+        setCategory(9);
+        setDifficulty("easy");
+        genereateQuestions();
     }, []);
 
-    const genereateQuestions = async (category, difficulty) => {
-        const url = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`;
-        const response = await fetch(url);
-        const data = await response.json();
-        const questions = data.results.map((question) => {
-            const correctAnswer = question.correct_answer;
-            const incorrectAnswers = question.incorrect_answers;
-            const allAnswers = [...incorrectAnswers, correctAnswer];
-            const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
-            return {
-                ...question,
-                allAnswers: shuffledAnswers,
-                correctAnswer,
-            };
-        });
-        setQuestions(questions);
-        setCurrentQuestion(questions[0]);
-        setCurrentQuestionIndex(0);
-        setCurrentCorrectlyAnswered(0);
+    const genereateQuestions = async () => {
+        try {
+            console.log(amount, category, difficulty);
+            const url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
+            const response = await fetch(url);
+            const data = await response.json();
+            const questions = data.results.map((question) => {
+                const correctAnswer = question.correct_answer;
+                const incorrectAnswers = question.incorrect_answers;
+                const allAnswers = [...incorrectAnswers, correctAnswer];
+                const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
+                return {
+                    ...question,
+                    allAnswers: shuffledAnswers,
+                    correctAnswer,
+                };
+            });
+            console.log(questions);
+            console.log(data);
+            setQuestions(questions);
+            setCurrentQuestion(questions[0]);
+            setCurrentQuestionIndex(0);
+            setCurrentCorrectlyAnswered(0);
+            setCanMove(false);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const updateQuestion = () => {
@@ -62,9 +90,11 @@ export const QuestionProvider = ({ children }) => {
         if (nextQuestion) {
             setCurrentQuestion(nextQuestion);
             setCurrentQuestionIndex(currentQuestionIndex + 1);
+            setCanMove(false);
         }
         else {
             alert("You have completed the quiz with " + currentCorrectlyAnswered + " correct answers");
+            toggleIsActive();
         }
     };
 
@@ -90,6 +120,13 @@ export const QuestionProvider = ({ children }) => {
                 updateQuestion,
                 updateCorrectlyAnswered,
                 updateCanMove,
+                setGameSettings,
+                canMove,
+                category,
+                difficulty,
+                amount,
+                isActive,
+                toggleIsActive,
             }}
         >
             {children}
