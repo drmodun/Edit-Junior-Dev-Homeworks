@@ -1,9 +1,14 @@
+import { useEffect } from "react";
+import Question from "./components/Question";
+import { QuestionProvider } from "./providers/QuestionProvider";
 
 
 function App() {
+
   return (
-    <div className="App">
-    </div>
+    <QuestionProvider>
+      <Question />
+    </QuestionProvider>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext, createContext } from "react";
 
 const defaultContext = {
@@ -10,6 +10,8 @@ const defaultContext = {
     setCurrentQuestionIndex: () => { },
     currentCorrectlyAnswered: 0,
     setCurrentCorrectlyAnswered: () => { },
+    canMove: false,
+    setCanMove: () => { },
     category: "",
     setCategory: () => { },
     difficulty: "",
@@ -24,6 +26,15 @@ export const QuestionProvider = ({ children }) => {
     const [currentQuestion, setCurrentQuestion] = useState(defaultContext.currentQuestion);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(defaultContext.currentQuestionIndex);
     const [currentCorrectlyAnswered, setCurrentCorrectlyAnswered] = useState(defaultContext.currentCorrectlyAnswered);
+    const [canMove, setCanMove] = useState(defaultContext.canMove);
+
+
+    useEffect(() => {
+        async function fetchQuestions() {
+            await genereateQuestions(9, "easy");
+        }
+        fetchQuestions();
+    }, []);
 
     const genereateQuestions = async (category, difficulty) => {
         const url = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`;
@@ -45,15 +56,15 @@ export const QuestionProvider = ({ children }) => {
         setCurrentQuestionIndex(0);
         setCurrentCorrectlyAnswered(0);
     };
-    
+
     const updateQuestion = () => {
         const nextQuestion = questions[currentQuestionIndex + 1];
         if (nextQuestion) {
             setCurrentQuestion(nextQuestion);
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
-        else{
-            alert("You have completed the quiz with "  + currentCorrectlyAnswered + " correct answers" );
+        else {
+            alert("You have completed the quiz with " + currentCorrectlyAnswered + " correct answers");
         }
     };
 
@@ -61,10 +72,9 @@ export const QuestionProvider = ({ children }) => {
         setCurrentCorrectlyAnswered(currentCorrectlyAnswered + 1);
     };
 
-
-
-
-
+    const updateCanMove = (bool) => {
+        setCanMove(bool);
+    };
     return (
         <QuestionContext.Provider
 
@@ -79,6 +89,7 @@ export const QuestionProvider = ({ children }) => {
                 genereateQuestions,
                 updateQuestion,
                 updateCorrectlyAnswered,
+                updateCanMove,
             }}
         >
             {children}

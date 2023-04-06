@@ -1,0 +1,43 @@
+.Question{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    height: 500px;
+}
+.QuestionText{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+}
+.Answers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    height: 200px;
+}
+
+.Answer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 50px;
+    border-radius:  20px;
+    background-color: #F5F5F5;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: large;
+    color: black;
+}   
+.Answer:hover{
+    background-color: #E0E0E0;
+}
+.Answer:active{
+    background-color: #BDBDBD;
+}
