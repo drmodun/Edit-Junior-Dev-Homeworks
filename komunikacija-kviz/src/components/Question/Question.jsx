@@ -4,7 +4,7 @@ import classes from "./Question.module.css";
 export const Question = () => {
 
 
-    const { questions, currentQuestion, currentQuestionIndex, updateCorrectlyAnswered, updateCanMove, generateQuestions, isActive } = useQuestionContext();
+    const { questions, currentQuestion, currentQuestionIndex, updateCorrectlyAnswered, updateCanMove, generateQuestions, isActive, toggleFrozen, isFrozen } = useQuestionContext();
     const question = questions[currentQuestionIndex];
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 

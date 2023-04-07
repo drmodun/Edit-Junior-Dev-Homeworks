@@ -1,0 +1,117 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    width: 1000px;
+    padding: 0 20px;
+    border: 1px solid #000;
+    height: 50px;
+    font-weight: 600;
+}
+
+.row__image{
+    display: flex;
+    width: 200px;
+    height: 100%;
+    max-width: 600px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: 1px solid #000;
+    border-left-style: none;
+}
+.row__image img{
+    width: 100%;
+    height: auto;
+}
+.row__name{
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 0 auto; 
+    padding: 0 20px;
+    height: 100%;
+    font-size: 15px;
+    text-align: center;
+
+}
+.row__size{
+    width: 200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+    height: 100%;
+}
+.row__price{
+    width: 200px;
+    height: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+
+}
+.row__button{
+    width: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.row__button button{
+    width: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: hidden;
+}
+.row__color{
+    width: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+    height: 100%;   
+}
+.row__button button{
+    background-color:chartreuse;
+    color: #000;
+    transition: background-color 0.4s ease-in-out;
+    border: hidden;
+    border-radius: 15px;
+    padding: 10px 5px;
+}
+.row__button button:hover{
+    background-color:aquamarine;
+    
+}
+.row__button button:active{
+    background-color:aqua;
+    
+}
