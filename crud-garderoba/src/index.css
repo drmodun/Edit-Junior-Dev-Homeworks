@@ -15,7 +15,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100vh;
   width: 100vw;
   background-color: #fff;
@@ -23,8 +23,56 @@ code {
 .action-row{
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  margin-bottom: 50px;
+}
+@media (max-width: 2000px) {
+  .action-row{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .table{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scaleX(0.95);
+  }
+}
+@media (max-width: 1440px) {
+  .action-row{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .table{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scaleX(0.8);
+  }
+}
+@media (max-width: 1000px) {
+  .action-row{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .table{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .action-row{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .table{
+    width: 100%;
+  }
 }

@@ -4,6 +4,8 @@ import "./data.js";
 import { Row } from "./components/Row/Row.jsx";
 import { Form } from "./components/Form/Form.jsx";
 import { Filter } from "./components/Filter/Filter.jsx";
+import { Table } from "./components/Table/Table.jsx";
+import "./index.css";
 function App() {
   const [data, setData] = useState([]);
   const [currentArticle, setCurrentArticle] = useState(null);
@@ -89,38 +91,39 @@ function App() {
   return (
     <div className="App">
       <h1>Articles of clothing</h1>
-      {data.filter((item) => {
-        if (criteria.name) {
-          return item.name.toLowerCase().includes(criteria.name.toLowerCase());
-        }
-        return true;
-      }).filter((item) => {
-        if (criteria.price) {
-          return Number(item.price) <= Number(criteria.price);
-        }
-        return true;
-      }).filter((item) => {
-        if (criteria.size && criteria.size !== "all") {
-          return item.size === criteria.size;
-        }
-        return true;
-      }).filter((item) => {
-        if (criteria.color && criteria.color !== "all") {
-          return item.color === criteria.color;
-        }
-        return true;
-      }).filter((item) => {
-        if (criteria.image) {
-          return item.image.toLowerCase().includes(criteria.image.toLowerCase());
-        }
-        return true;
-      })
-        .map((item) => (
-          <Row article={item} setEdit={setEdit} key={item.id} remove={deleteArticle} />
-        ))}
       <div className="action-row">
         <Form addArticle={currentArticle ? editArticle : addArticle} currentArticle={currentArticle} cancelEdit={cancelEdit} />
         <Filter setFilter={setFilter} />
+        <Table
+        children={data.filter((item) => {
+          if (criteria.name) {
+            return item.name.toLowerCase().includes(criteria.name.toLowerCase());
+          }
+          return true;
+        }).filter((item) => {
+          if (criteria.price) {
+            return Number(item.price) <= Number(criteria.price);
+          }
+          return true;
+        }).filter((item) => {
+          if (criteria.size && criteria.size !== "all") {
+            return item.size === criteria.size;
+          }
+          return true;
+        }).filter((item) => {
+          if (criteria.color && criteria.color !== "all") {
+            return item.color === criteria.color;
+          }
+          return true;
+        }).filter((item) => {
+          if (criteria.image) {
+            return item.image.toLowerCase().includes(criteria.image.toLowerCase());
+          }
+          return true;
+        })
+          .map((item) => (
+            <Row article={item} setEdit={setEdit} key={item.id} remove={deleteArticle} />
+          ))}/>
       </div>
     </div>
   );

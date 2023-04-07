@@ -18,14 +18,6 @@
     },
     {
       "name": "T-shirt",
-      "price": 10,
-      "size": "M",
-      "color": "green",
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71ZQ9ZQ3QlL._AC_UX679_.jpg",
-      "id": 3
-    },
-    {
-      "name": "T-shirt",
       "price": "1023",
       "size": "L",
       "color": "yellow",
@@ -47,14 +39,6 @@
       "color": "blue",
       "image": "https://images-na.ssl-images-amazon.com/images/I/71ZQ9ZQ3QlL._AC_UX679_.jpg",
       "id": "f9b3ef24-4bcd-4282-9f95-f7efd43a4bc3"
-    },
-    {
-      "name": "Jan Modun",
-      "price": "10",
-      "size": "S",
-      "color": "red",
-      "image": "https://images-na.ssl-images-amazon.com/images/I/71ZQ9ZQ3QlL._AC_UX679_.jpg",
-      "id": "046349b8-ddd4-4acd-870f-bcbbc7ce063d"
     }
   ]
 }

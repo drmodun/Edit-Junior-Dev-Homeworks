@@ -1,0 +1,109 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    width: 1100px;
+    padding: 0 20px;
+    border: 1px solid #000;
+    height: 70px;
+    font-weight: 600;
+    background-color: darkcyan;
+}
+
+.row__image{
+    display: flex;
+    width: 200px;
+    height: 100%;
+    max-width: 600px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: 1px solid #000;
+    border-left-style: none;
+}
+.row__name{
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 0 auto; 
+    padding: 0 20px;
+    height: 100%;
+    font-size: 15px;
+    text-align: center;
+
+}
+.row__size{
+    width: 200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+    height: 100%;
+}
+.row__price{
+    width: 200px;
+    height: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+
+}
+.row__button{
+    width: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.row__button button{
+    width: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: hidden;
+}
+.row__color{
+    width: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-left-style: none;
+    height: 100%;   
+}
+.row__actions{
+    width: 660px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    border-right-style: none;
+    height: 100%;   
+}
