@@ -5,7 +5,7 @@
     align-items: center;
     align-content: center;
     margin: 0 auto;
-    width: 1000px;
+    width: 1100px;
     padding: 0 20px;
     border: 1px solid #000;
     height: 50px;
@@ -114,4 +114,31 @@
 .row__button button:active{
     background-color:aqua;
     
+}
+.Remove{
+    border : 1px solid #000;
+    height: 100%;
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    padding: 0px 20px;
+    align-items: center;
+    border-right-style: none;
+
+}
+.Remove > button{
+    background-color: red;
+    color: #000;
+    transition: background-color 0.4s ease-in-out;
+    border: hidden;
+    border-radius: 15px;
+    padding: 10px 5px;
+    width: 100px;
+    margin-left: 20px;
+}
+.Remove > button:hover{
+    background-color: crimson;
+}
+.Remove > button:active{
+    background-color: darkred;
 }
