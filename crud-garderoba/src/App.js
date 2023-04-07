@@ -3,9 +3,16 @@ import { useEffect, useState } from "react";
 import "./data.js";
 import { Row } from "./components/Row/Row.jsx";
 import { Form } from "./components/Form/Form.jsx";
+import { Filter } from "./components/Filter/Filter.jsx";
 function App() {
   const [data, setData] = useState([]);
   const [currentArticle, setCurrentArticle] = useState(null);
+  const [criteria, setCriteria] = useState({});
+
+  function setFilter(filter) {
+    setCriteria(filter);
+  }
+
   async function fetchData() {
     try {
       const response = await fetch("http://localhost:3002/clothes");
@@ -21,7 +28,7 @@ function App() {
 
 
 
-  async function addArticle({newArticle}) {
+  async function addArticle({ newArticle }) {
     try {
       const response = await fetch("http://localhost:3002/clothes", {
         method: "POST",
@@ -38,6 +45,10 @@ function App() {
   }
 
   async function deleteArticle(id) {
+    const confim = window.confirm("Are you sure you want to delete?");
+    if (!confim) {
+      return;
+    }
     try {
       const response = await fetch(`http://localhost:3002/clothes/${id}`, {
         method: "DELETE",
@@ -49,7 +60,7 @@ function App() {
     }
   }
 
-  async function editArticle({newArticle, id}) {
+  async function editArticle({ newArticle, id }) {
     try {
       const response = await fetch(`http://localhost:3002/clothes/${id}`, {
         method: "PUT",
@@ -77,11 +88,40 @@ function App() {
 
   return (
     <div className="App">
-      {data.map((item) => (
-        <Row article={item} setEdit={setEdit} key={item.id} remove={deleteArticle}/>
-      ))}
-      <Form addArticle={currentArticle ? editArticle : addArticle} currentArticle={currentArticle} cancelEdit={cancelEdit}/>
-
+      <h1>Articles of clothing</h1>
+      {data.filter((item) => {
+        if (criteria.name) {
+          return item.name.toLowerCase().includes(criteria.name.toLowerCase());
+        }
+        return true;
+      }).filter((item) => {
+        if (criteria.price) {
+          return Number(item.price) <= Number(criteria.price);
+        }
+        return true;
+      }).filter((item) => {
+        if (criteria.size && criteria.size !== "all") {
+          return item.size === criteria.size;
+        }
+        return true;
+      }).filter((item) => {
+        if (criteria.color && criteria.color !== "all") {
+          return item.color === criteria.color;
+        }
+        return true;
+      }).filter((item) => {
+        if (criteria.image) {
+          return item.image.toLowerCase().includes(criteria.image.toLowerCase());
+        }
+        return true;
+      })
+        .map((item) => (
+          <Row article={item} setEdit={setEdit} key={item.id} remove={deleteArticle} />
+        ))}
+      <div className="action-row">
+        <Form addArticle={currentArticle ? editArticle : addArticle} currentArticle={currentArticle} cancelEdit={cancelEdit} />
+        <Filter setFilter={setFilter} />
+      </div>
     </div>
   );
 }

@@ -37,8 +37,12 @@ export const Form = ({addArticle, currentArticle, cancelEdit}) => {
             setError("Please enter a valid price");
             return;
         }
+        const confim = window.confirm("Are you sure you want to submit?");
         const newArticle = new ArcticleOfClothing( currentArticle ? currentArticle.id : uuidv4(), name, price, size, color, image);
         console.log(newArticle);
+        if (!confim) {
+            return;
+        }
         e.preventDefault();
         setName("");
         setPrice("");
