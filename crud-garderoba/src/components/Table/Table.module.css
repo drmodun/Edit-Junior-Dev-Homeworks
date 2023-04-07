@@ -1,4 +1,4 @@
-.row{
+.row {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -12,7 +12,7 @@
     background-color: darkcyan;
 }
 
-.row__image{
+.row__image {
     display: flex;
     width: 200px;
     height: 100%;
@@ -24,7 +24,8 @@
     border: 1px solid #000;
     border-left-style: none;
 }
-.row__name{
+
+.row__name {
     width: 200px;
     height: 100%;
     display: flex;
@@ -34,14 +35,15 @@
     border-left-style: none;
     flex-wrap: wrap;
     max-width: 600px;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 0 20px;
     height: 100%;
     font-size: 15px;
     text-align: center;
 
 }
-.row__size{
+
+.row__size {
     width: 200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -54,7 +56,8 @@
     border-left-style: none;
     height: 100%;
 }
-.row__price{
+
+.row__price {
     width: 200px;
     height: 100%;
     max-width: 600px;
@@ -69,20 +72,23 @@
     border-left-style: none;
 
 }
-.row__button{
+
+.row__button {
     width: 200px;
     max-width: 600px;
     margin: 0 auto;
     padding: 0 20px;
 }
-.row__button button{
+
+.row__button button {
     width: 200px;
     max-width: 600px;
     margin: 0 auto;
     padding: 0 20px;
     border: hidden;
 }
-.row__color{
+
+.row__color {
     width: 200px;
     max-width: 600px;
     margin: 0 auto;
@@ -93,9 +99,10 @@
     justify-content: center;
     border: 1px solid #000;
     border-left-style: none;
-    height: 100%;   
+    height: 100%;
 }
-.row__actions{
+
+.row__actions {
     width: 660px;
     margin: 0 auto;
     padding: 0 20px;
@@ -105,5 +112,5 @@
     justify-content: center;
     border: 1px solid #000;
     border-right-style: none;
-    height: 100%;   
+    height: 100%;
 }

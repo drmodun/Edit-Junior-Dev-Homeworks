@@ -8,7 +8,7 @@ export const Table = ({ children }) => {
                     Image
                 </div>
                 <div className={classes.row__name}>
-                <span>Name</span>
+                    <span>Name</span>
                 </div>
                 <div className={classes.row__size}>
                     <span>Size</span>

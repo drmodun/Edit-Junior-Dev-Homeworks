@@ -1,6 +1,6 @@
-.Cancel{
+.Cancel {
     width: 240px;
-    padding: 10px 20px; 
+    padding: 10px 20px;
     border: hidden;
     background-color: #ff1744;
     color: #000;
@@ -10,13 +10,16 @@
     padding: 10px 5px;
     margin-top: 40px;
 }
-.Cancel:hover{
+
+.Cancel:hover {
     background-color: #ff5252;
 }
-.Cancel:active{
+
+.Cancel:active {
     background-color: #d50000;
 }
-.Form{
+
+.Form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,37 +29,39 @@
     padding: 20px;
     height: 850px;
     border-radius: 20px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin-right: 20px;
 }
-.Form > label{
-   font-size: 15px;
+
+.Form>label {
+    font-size: 15px;
     text-align: center;
     font-weight: 500;
     margin: 10px 0;
     padding: 20px;
 }
-.Form > input{
+
+.Form>input {
     width: 200px;
-    padding: 10px 20px; 
+    padding: 10px 20px;
     border-radius: 20px;
     transition: background-color 0.4s ease-in-out;
     border: 1px solid #000;
 }
 
-.Form > input:hover{
+.Form>input:hover {
     background-color: #e0e0e0;
 }
 
-.Form > input:focus{
-    background-color:lightgray;
+.Form>input:focus {
+    background-color: lightgray;
 }
 
-.Form > button{
+.Form>button {
     width: 240px;
     padding: 10px 20px;
     border: hidden;
-    background-color:chartreuse;
+    background-color: chartreuse;
     color: #000;
     transition: background-color 0.4s ease-in-out;
     border: hidden;
@@ -65,16 +70,16 @@
     margin-top: 40px;
 }
 
-.Form > button:hover{
+.Form>button:hover {
     background-color: #b2ff59;
 }
 
-.Form > button:focus{
+.Form>button:focus {
     background-color: #76ff03;
 }
 
 
-.Form > select{
+.Form>select {
     width: 240px;
     max-width: 600px;
     margin: 0 auto;
@@ -86,13 +91,15 @@
     border: 1px solid #000;
 }
 
-.Form > select:hover{
+.Form>select:hover {
     background-color: #e0e0e0;
 }
-.Form > select:focus{
-    background-color:lightgray;
+
+.Form>select:focus {
+    background-color: lightgray;
 }
-.Error{
+
+.Error {
     color: red;
     font-size: 12px;
     margin: 0;

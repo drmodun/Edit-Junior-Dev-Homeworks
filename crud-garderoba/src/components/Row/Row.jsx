@@ -1,5 +1,5 @@
 import classes from './Row.module.css';
-export const Row = ({ article, setEdit, remove}) => {
+export const Row = ({ article, setEdit, remove }) => {
     return (
         <div className={classes.row}>
             <div className={classes.row__image}>
@@ -15,13 +15,13 @@ export const Row = ({ article, setEdit, remove}) => {
                 <span>{article.color}</span>
             </div>
             <div className={classes.row__price}>
-                <span>{article.price}</span>
+                <span>{article.price}$</span>
             </div>
             <div className={classes.row__button}>
-                <button onClick={ ()=>setEdit(article.id)}>Edit</button>
+                <button onClick={() => setEdit(article.id)}>Edit</button>
             </div>
             <div className={classes.Remove}>
-                <button onClick={()=>remove(article.id)}>Remove</button>
+                <button onClick={() => remove(article.id)}>Remove</button>
             </div>
         </div>
     )

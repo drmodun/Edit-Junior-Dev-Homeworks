@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import classes from "./Form.module.css";
-import { ArcticleOfClothing } from "../../data"; 
+import { ArcticleOfClothing } from "../../data";
 import { v4 as uuidv4 } from "uuid";
-export const Form = ({addArticle, currentArticle, cancelEdit}) => {
+export const Form = ({ addArticle, currentArticle, cancelEdit }) => {
     const [name, setName] = useState(currentArticle ? currentArticle.name : "");
-    const [price, setPrice] = useState( currentArticle ? currentArticle.price :"");
-    const [size, setSize] = useState( currentArticle ? currentArticle.size :"S");
-    const [color, setColor] = useState( currentArticle ? currentArticle.color :"red");
-    const [image, setImage] = useState( currentArticle ? currentArticle.image :"");
+    const [price, setPrice] = useState(currentArticle ? currentArticle.price : "");
+    const [size, setSize] = useState(currentArticle ? currentArticle.size : "S");
+    const [color, setColor] = useState(currentArticle ? currentArticle.color : "red");
+    const [image, setImage] = useState(currentArticle ? currentArticle.image : "");
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export const Form = ({addArticle, currentArticle, cancelEdit}) => {
             return;
         }
         const confim = window.confirm("Are you sure you want to submit?");
-        const newArticle = new ArcticleOfClothing( currentArticle ? currentArticle.id : uuidv4(), name, price, size, color, image);
+        const newArticle = new ArcticleOfClothing(currentArticle ? currentArticle.id : uuidv4(), name, price, size, color, image);
         console.log(newArticle);
         if (!confim) {
             return;
@@ -50,7 +50,7 @@ export const Form = ({addArticle, currentArticle, cancelEdit}) => {
         setColor("red");
         setError("");
         setImage("");
-        addArticle(currentArticle ? {newArticle, id: currentArticle.id} : {newArticle});
+        addArticle(currentArticle ? { newArticle, id: currentArticle.id } : { newArticle });
         cancelEdit();
     };
 

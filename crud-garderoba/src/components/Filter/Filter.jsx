@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import classes from "../Form/Form.module.css";
 
-export const Filter = ({setFilter}) => {
+export const Filter = ({ setFilter }) => {
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [size, setSize] = useState("all");
     const [color, setColor] = useState("all");
     const [image, setImage] = useState("");
-    
+
     const update = (e) => {
         console.log(name, price, size, color, image);
-        setFilter({name, price, size, color, image});
+        setFilter({ name, price, size, color, image });
     }
 
     const clear = (e) => {
@@ -59,9 +59,9 @@ export const Filter = ({setFilter}) => {
             <label htmlFor="image">Image</label>
             <input type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} />
             <div>
-            <button className={classes.Cancel} onClick ={clear}>Clear Filters</button>
+                <button className={classes.Cancel} onClick={clear}>Clear Filters</button>
             </div>
-            </form>
+        </form>
     )
 
 

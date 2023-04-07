@@ -11,7 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.App{
+
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +21,8 @@ code {
   width: 100vw;
   background-color: #fff;
 }
-.action-row{
+
+.action-row {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -28,51 +30,59 @@ code {
   width: 100%;
   margin-bottom: 50px;
 }
+
 @media (max-width: 2000px) {
-  .action-row{
+  .action-row {
     flex-direction: row;
     align-items: center;
     justify-content: center;
   }
-  .table{
+
+  .table {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transform: scaleX(0.95);
   }
 }
+
 @media (max-width: 1440px) {
-  .action-row{
+  .action-row {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .table{
+
+  .table {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     transform: scaleX(0.8);
   }
 }
+
 @media (max-width: 1000px) {
-  .action-row{
+  .action-row {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .table{
+
+  .table {
     width: 100%;
     align-items: center;
     justify-content: center;
   }
 }
+
 @media (max-width: 600px) {
-  .action-row{
+  .action-row {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .table{
+
+  .table {
     width: 100%;
   }
 }
